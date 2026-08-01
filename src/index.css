@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --royal: #1533d8;
+  --royal-deep: #0d1654;
+  --gold: #d4942a;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+::selection {
+  background: #1533d8;
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #1533d8;
+  border-radius: 999px;
+  border: 3px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0d1654;
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-[88rem] px-5 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-royal-700;
+  }
+  .h-section {
+    @apply font-serif text-3xl font-semibold leading-[1.1] tracking-tightest text-royal-950 sm:text-4xl lg:text-[2.85rem];
+  }
+  .h-section-light {
+    @apply font-serif text-3xl font-semibold leading-[1.1] tracking-tightest text-white sm:text-4xl lg:text-[2.85rem];
+  }
+  .lead {
+    @apply text-base leading-relaxed text-slate-600 sm:text-lg;
+  }
+  .lead-light {
+    @apply text-base leading-relaxed text-royal-100 sm:text-lg;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+  .btn-gold {
+    @apply btn bg-gradient-to-br from-gold-300 to-gold-500 text-royal-950 shadow-lg shadow-gold-500/25 hover:shadow-xl hover:shadow-gold-500/40 hover:-translate-y-0.5 focus-visible:ring-gold-400;
+  }
+  .btn-light {
+    @apply btn bg-white text-royal-800 shadow-lg shadow-royal-950/20 hover:bg-royal-50 hover:-translate-y-0.5 focus-visible:ring-white;
+  }
+  .btn-outline-light {
+    @apply btn border border-white/30 bg-white/5 text-white backdrop-blur hover:bg-white/10 hover:border-white/50 focus-visible:ring-white;
+  }
+  .btn-royal {
+    @apply btn bg-gradient-to-br from-royal-600 to-royal-800 text-white shadow-lg shadow-royal-700/30 hover:shadow-xl hover:shadow-royal-700/40 hover:-translate-y-0.5 focus-visible:ring-royal-500;
+  }
+  .card {
+    @apply rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-royal-200 hover:shadow-2xl hover:shadow-royal-900/10;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:border-royal-500 focus:outline-none focus:ring-2 focus:ring-royal-500/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700;
+  }
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #e7c267 0%, #d4942a 50%, #b9731f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Mesh / radial backgrounds */
+.bg-mesh-royal {
+  background-color: #070d33;
+  background-image:
+    radial-gradient(at 18% 18%, rgba(51, 102, 255, 0.32) 0px, transparent 50%),
+    radial-gradient(at 82% 12%, rgba(212, 148, 42, 0.18) 0px, transparent 45%),
+    radial-gradient(at 75% 85%, rgba(31, 71, 245, 0.28) 0px, transparent 50%),
+    radial-gradient(at 25% 80%, rgba(13, 22, 84, 0.5) 0px, transparent 55%);
+}
+.bg-mesh-light {
+  background-color: #f8fafc;
+  background-image:
+    radial-gradient(at 10% 0%, rgba(51, 102, 255, 0.06) 0px, transparent 40%),
+    radial-gradient(at 90% 100%, rgba(212, 148, 42, 0.05) 0px, transparent 40%);
+}
+
+/* Grid pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Glass nav */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+.glass-dark {
+  background: rgba(7, 13, 51, 0.6);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+
+/* Number counter shimmer */
+.stat-shimmer {
+  background: linear-gradient(90deg, #e7c267, #fff, #e7c267);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
